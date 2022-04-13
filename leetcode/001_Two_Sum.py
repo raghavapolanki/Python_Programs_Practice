@@ -6,14 +6,17 @@ class Solution(object):
     #     :rtype: List[int]
     #     """
     #     #n^2
-        ls = len(nums)
-        for i in range(ls):
-            #print(i)
-            for j in range(i + 1, ls):
-                print(j)
-                if nums[i] + nums[j] == target:
-                    return [i, j]
 
+    #Method 1:
+    #     ls = len(nums)
+    #     for i in range(ls):
+    #         #print(i)
+    #         for j in range(i + 1, ls):
+    #             print(j)
+    #             if nums[i] + nums[j] == target:
+    #                 return [i, j]
+
+    # Method 2:
     # def twoSum(self, nums, target):
     #     # hash 1
     #     hash_nums = {}
@@ -36,6 +39,7 @@ class Solution(object):
     #         except KeyError:
     #             pass
 
+    # Method 3:
     # def twoSum(self, nums, target):
     #     # hash 2
     #     hash_nums = {}
@@ -47,6 +51,7 @@ class Solution(object):
     #         except KeyError:
     #             hash_nums[num] = index
 
+    # Method 4:
     # def twoSum(self, nums, target):
     #     # two point
     #     nums_index = [(v, index) for index, v in enumerate(nums)]
@@ -61,6 +66,21 @@ class Solution(object):
     #         else:
     #             end -= 1
 
+# Given an array of integers,return indices of the two numbers such that they add upto a specific target
+# You may assume that each input would have exactly one solution
+#
+# Maintain a mapping from each number to its index
+# Check if target - num has already been found
+# Time - O(n)
+# Space - O(n) for the dictionary
+
+    # Method 5:
+        num_to_index = {}
+        for i, num in enumerate(nums):
+            if target - num in num_to_index:
+                return [num_to_index[target - num], i]
+            num_to_index[num] = i
+        return
 
 if __name__ == '__main__':
     # begin
